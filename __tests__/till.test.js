@@ -1,4 +1,5 @@
-const {
+//OLD TESTS
+/*const {
   addToBasket,
   totalPrice,
   scan,
@@ -63,3 +64,17 @@ test('removeFromBasket removes the item with the given barcode from the basket',
 
   expect(basket).not.toContain(orange);
 });
+*/
+
+//NEW TESTS
+const till = require("../src/till.js");
+
+test('scan finds an item by its barcode', () => {
+  const Till = new till();
+  expect(Till.scan(456)).toEqual('banana');
+});
+
+test('adds scanned product to basket', () => {
+  const Till = new till();
+  expect(Till.addToBasket('apple')).toEqual(['apple'])
+})
