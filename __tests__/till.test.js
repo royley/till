@@ -76,5 +76,14 @@ test('scan finds an item by its barcode', () => {
 
 test('adds scanned product to basket', () => {
   const Till = new till();
-  expect(Till.addToBasket('apple')).toEqual(['apple'])
-})
+  Till.addToBasket('apple');
+  expect(Till.basket).toContain('apple')
+});
+
+test('removeFromBasket removes the item with the given barcode from the basket', () => {
+  const Till = new till();
+  const basket = ['apple', 'orange', 'pineapple'];
+
+  Till.removeFromBasket(789);
+  expect(Till.basket).not.toContain('orange');
+});

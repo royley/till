@@ -60,16 +60,11 @@ till.prototype.addToBasket = function(product) {
   return this.basket;
 };
 
-till.prototype.totalPrice = function(basket) {
-  return this.basket.reduce((total, product) => {
-    return total + product.price;
-  }, 0);
-};
-
-till.prototype.removeFromBasket = function(barcode, basket) {
-  const product = scan(barcode, basket);
+till.prototype.removeFromBasket = function(barcode) {
+  const product = this.scan(barcode);
   const index = this.basket.indexOf(product);
   this.basket.splice(index, 1);
+  return this.basket
 }
 
 module.exports = till;
