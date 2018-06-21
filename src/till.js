@@ -60,11 +60,22 @@ till.prototype.addToBasket = function(product) {
   return this.basket;
 };
 
+//Alternative addToBasket
+till.prototype.addToBasket2 = function(barcode) {
+  const product = this.scan(barcode);
+  this.basket.push(product);
+  return this.basket;
+}
+
 till.prototype.removeFromBasket = function(barcode) {
   const product = this.scan(barcode);
   const index = this.basket.indexOf(product);
   this.basket.splice(index, 1);
   return this.basket
+}
+
+till.prototype.transactions = function(basket) {
+  
 }
 
 module.exports = till;
